@@ -1,15 +1,16 @@
 {
-  "titolo": "Camicia dei Volti",
   "prezzo": 160,
-  "immagine": "/assets/prodotto8.jpg",
   "descrizione": "Viscosa stampata con la serie dei volti, collo arricciato e bottoni a campanella in ottone anticato.",
+  "immagine": "/assets/prodotto8.jpg",
+  "titolo": "Camicia dei Volti",
   "categoria": "sartoria",
+  "archiviato": true,
   "tag": [
     "camicia",
     "viscosa",
     "stampa",
     "volti"
   ],
-  "materiale": "Viscosa stampata · bottoni in ottone",
-  "evidenza": false
+  "evidenza": false,
+  "materiale": "Viscosa stampata · bottoni in ottone"
 }
