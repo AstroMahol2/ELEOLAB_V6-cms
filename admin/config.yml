@@ -1,0 +1,98 @@
+# ============================================================================
+# Decap CMS — configurazione del pannello EleoLab
+#
+# ATTENZIONE AI PERCORSI: sono relativi alla RADICE DEL REPOSITORY, non alla
+# cartella del sito. Questo file presume che il contenuto di questa cartella
+# sia la radice del repository (index.html in cima).
+# Se invece carichi su GitHub la cartella che contiene questa, anteponi il suo
+# nome a "folder" e a "media_folder" — vedi LEGGIMI-CMS.txt.
+# ============================================================================
+
+backend:
+  name: git-gateway
+  branch: main            # se il ramo si chiama master, cambia qui
+
+# Dove il CMS salva le immagini caricate, e con quale percorso il sito le legge
+media_folder: "assets/prodotti"
+public_folder: "/assets/prodotti"
+
+# Messaggi dei commit generati dal pannello
+site_url: https://eleolab.netlify.app
+display_url: https://eleolab.netlify.app
+logo_url: /assets/logo-eleolab.png
+locale: "it"
+
+collections:
+  - name: "prodotti"
+    label: "Prodotti"
+    label_singular: "Prodotto"
+    folder: "prodotti"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: titolo
+    summary: "{{titolo}} — {{prezzo}} €"
+    sortable_fields: ["titolo", "prezzo", "categoria"]
+    editor:
+      preview: false
+
+    fields:
+      - label: "Titolo"
+        name: "titolo"
+        widget: "string"
+        hint: "Il nome del pezzo, come appare nel catalogo. Es: Peonia di seta"
+
+      - label: "Prezzo (€)"
+        name: "prezzo"
+        widget: "number"
+        value_type: "float"
+        min: 0
+        step: 1
+        hint: "Solo il numero, senza simbolo dell euro"
+
+      - label: "Immagine"
+        name: "immagine"
+        widget: "image"
+        allow_multiple: false
+        hint: "Formato consigliato: verticale 4:5, almeno 900 px di larghezza"
+
+      - label: "Descrizione"
+        name: "descrizione"
+        widget: "text"
+        required: false
+        hint: "Il racconto del pezzo: materiali, lavorazione, tempi"
+
+      # Guida i filtri della pagina Prodotti: e un elenco chiuso, cosi i valori
+      # combaciano sempre con i pulsanti del catalogo
+      - label: "Categoria"
+        name: "categoria"
+        widget: "select"
+        default: "sartoria"
+        options:
+          - { label: "Sartoria", value: "sartoria" }
+          - { label: "Maglieria", value: "maglieria" }
+          - { label: "Fiori in seta", value: "fiori" }
+          - { label: "Accessori", value: "accessori" }
+
+      # Parole chiave per la ricerca interna e per l indicizzazione
+      - label: "Tag (SEO)"
+        name: "tag"
+        widget: "list"
+        required: false
+        default: []
+        hint: "Una parola chiave per riga. Es: seta, fatto a mano, Firenze"
+
+      - label: "Materiale (riga breve)"
+        name: "materiale"
+        widget: "string"
+        required: false
+        hint: "La riga piccola sotto la foto. Es: Seta · pezzo unico"
+
+      - label: "In evidenza"
+        name: "evidenza"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Se attivo, il pezzo compare tra i primi del catalogo"

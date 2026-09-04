@@ -1,0 +1,10 @@
+{
+  "titolo": "Cardigan Nuvola",
+  "prezzo": 195,
+  "immagine": "/assets/prodotto4.jpg",
+  "descrizione": "Mohair e seta lavorati ai ferri, bottoni in corozzo. Leggero come niente, tiene caldo davvero.",
+  "categoria": "maglieria",
+  "tag": ["cardigan","mohair","maglieria","ai ferri"],
+  "materiale": "Mohair e seta · ai ferri",
+  "evidenza": true
+}

@@ -1,0 +1,10 @@
+{
+  "titolo": "Canotta Orto",
+  "prezzo": 140,
+  "immagine": "/assets/prodotto5.jpg",
+  "descrizione": "Cotone ritorto lavorato ai ferri, colore oliva ottenuto con tintura naturale. Scollo a V morbido, vestibilita ampia.",
+  "categoria": "maglieria",
+  "tag": ["canotta","cotone","maglieria","verde oliva"],
+  "materiale": "Cotone ritorto · ai ferri",
+  "evidenza": false
+}

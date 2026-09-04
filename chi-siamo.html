@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chi Siamo — EleoLab</title>
+  <meta name="description" content="I valori di EleoLab: moda lenta, poche cose fatte bene, tecniche di sartoria e di creazione dei fiori in seta. E come raggiungerci a Firenze.">
+  <meta name="theme-color" content="#FAFAFA">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EleoLab">
+  <meta property="og:title" content="Chi Siamo — EleoLab">
+  <meta property="og:description" content="I valori di EleoLab: moda lenta, poche cose fatte bene, tecniche di sartoria e di creazione dei fiori in seta. E come raggiungerci a Firenze.">
+  <!-- l anteprima nelle chat e sui social richiede un indirizzo assoluto:
+       con un percorso relativo l immagine non compare. Da aggiornare quando
+       colleghi il dominio definitivo. -->
+  <meta property="og:image" content="https://eleolab.netlify.app/assets/fiore1.jpg">
+  <meta property="og:locale" content="it_IT">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://eleolab.netlify.app/assets/fiore1.jpg">
+
+  <link rel="icon" href="assets/logo-eleolab.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&family=Syne:wght@400;500&display=swap">
+
+  <!-- Stili del marchio, poi le utility Tailwind compilate (l ordine conta:
+       Tailwind viene dopo, come faceva il CDN, cosi la cascata non cambia). -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tailwind.css">
+
+  <!-- Netlify Identity: gestisce il login al pannello dei contenuti -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+  <script src="boot.js"></script>
+</head>
+<body class="bg-panna text-ardesia antialiased">
+
+<a class="skip" href="#main">Salta al contenuto</a>
+
+<!-- ======================================================= HEADER GLOBALE -->
+<header id="site-header" class="fixed inset-x-0 top-0 z-50">
+  <div class="sezione">
+    <div class="wrap relative flex h-20 items-center justify-between gap-4 md:h-28">
+
+      <a href="index.html" class="shrink-0" aria-label="EleoLab, torna alla homepage">
+        <img src="assets/logo-eleolab.png" alt="EleoLab" width="2476" height="1201"
+             class="logo-blend w-32 md:w-40">
+      </a>
+
+      <nav class="absolute left-1/2 hidden -translate-x-1/2 md:block" aria-label="Navigazione principale">
+        <!-- ogni voce ha il suo colore, preso dal logo -->
+        <ul class="flex items-center gap-9 t-micro">
+          <li><a href="shop.html" data-nav="shop.html" class="link-line text-ocra">Prodotti</a></li>
+          <li><a href="chi-siamo.html" data-nav="chi-siamo.html" class="link-line text-salvia">Chi Siamo</a></li>
+          <li><a href="workshops.html" data-nav="workshops.html" class="link-line text-gotico">Workshops</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-5 md:gap-7">
+        <button type="button" data-panel-toggle="panel-search" aria-controls="panel-search"
+                aria-expanded="false" aria-label="Cerca nel sito"
+                class="transition-colors hover:text-ocra">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+            <circle cx="7.4" cy="7.4" r="5.6" stroke="currentColor" stroke-width="1"/>
+            <path d="M11.6 11.6 L15.6 15.6" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </button>
+
+        <button type="button" data-panel-toggle="panel-cart" aria-controls="panel-cart"
+                aria-expanded="false" aria-label="Apri il carrello"
+                class="relative transition-colors hover:text-ocra">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" aria-hidden="true">
+            <path d="M2.6 4.9h11.8l-1 10.2H3.6L2.6 4.9Z" stroke="currentColor" stroke-width="1"/>
+            <path d="M5.9 6.6V4.2a2.6 2.6 0 0 1 5.2 0v2.4" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <span data-cart-count
+                class="absolute -right-2 -top-1.5 flex h-3.5 min-w-3.5 items-center justify-center rounded-full bg-ocra px-1 text-[9px] font-normal leading-none text-panna opacity-0 transition-opacity">0</span>
+        </button>
+
+        <button type="button" class="burger md:hidden" data-panel-toggle="panel-menu"
+                aria-controls="panel-menu" aria-expanded="false" aria-label="Apri il menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================ MENU MOBILE -->
+<div id="panel-menu" class="panel fixed inset-0 z-[60] bg-panna md:hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menu di navigazione">
+  <div class="flex h-full flex-col">
+
+    <div class="flex h-20 shrink-0 items-center justify-between px-5">
+      <img src="assets/logo-eleolab.png" alt="" width="2476" height="1201" class="logo-blend w-32">
+      <button type="button" data-panel-close aria-label="Chiudi il menu" class="-mr-2 p-2">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="flex flex-1 flex-col justify-center px-5 pb-16" aria-label="Navigazione mobile">
+      <ul class="space-y-3">
+        <li data-panel-item><a href="shop.html" class="block font-display text-3xl text-ocra">Prodotti</a></li>
+        <li data-panel-item><a href="chi-siamo.html" class="block font-display text-3xl text-salvia">Chi&nbsp;Siamo</a></li>
+        <li data-panel-item><a href="workshops.html" class="block font-display text-3xl text-gotico">Workshops</a></li>
+      </ul>
+
+      <div data-panel-item class="mt-12 hairline pt-6">
+        <p class="t-eyebrow text-ardesia/70">Atelier</p>
+        <p class="mt-3 text-sm leading-relaxed">
+          Via Orcagna 6<br>
+          50121 Firenze, Italy<br>
+          <a href="tel:+393475515759" class="link-line">347 551 5759</a><br>
+          <a href="mailto:eleolab.firenze@gmail.com" class="link-line text-ocra">eleolab.firenze@gmail.com</a>
+        </p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ================================================================ RICERCA -->
+<div id="panel-search" class="panel fixed inset-0 z-[60]" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Cerca">
+  <div class="absolute inset-0 bg-inchiostro/20" data-panel-close></div>
+
+  <div class="sheet relative bg-panna pb-10 pt-6 sezione">
+    <div class="wrap">
+      <div class="flex items-start justify-between gap-6">
+        <form id="search-form" class="flex-1" role="search">
+          <label for="search-input" class="t-eyebrow text-ardesia/70">Cerca</label>
+          <input id="search-input" type="search" autocomplete="off"
+                 placeholder="Seta, maglieria, foulard, fiori..."
+                 class="field mt-1 font-display text-xl md:text-2xl">
+        </form>
+        <button type="button" data-panel-close aria-label="Chiudi la ricerca" class="mt-6 p-2">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="t-eyebrow mt-10 text-ardesia/70">Suggerimenti</p>
+      <ul class="mt-4 grid gap-x-10 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
+        <li data-search-item="peonia fiore seta rosa corsage"><a href="prodotto-singolo.html" class="link-line text-sm">Peonia di seta</a></li>
+        <li data-search-item="giacca tweed lana fodera"><a href="shop.html" class="link-line text-sm">Giacca in tweed</a></li>
+        <li data-search-item="cardigan mohair rosa maglieria"><a href="shop.html" class="link-line text-sm">Cardigan in mohair</a></li>
+        <li data-search-item="foulard seta stampa volti"><a href="shop.html" class="link-line text-sm">Foulard stampato</a></li>
+        <li data-search-item="camicia terracotta viscosa volti"><a href="shop.html" class="link-line text-sm">Camicia dei volti</a></li>
+        <li data-search-item="workshop corso fiori in seta atelier"><a href="workshops.html" class="link-line text-sm">Workshop in atelier</a></li>
+      </ul>
+      <p id="search-empty" hidden class="mt-4 text-sm text-ardesia/60">Nessun risultato. Provate con &laquo;seta&raquo;.</p>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================================== CARRELLO -->
+<div id="panel-cart" class="panel fixed inset-0 z-[60]" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Carrello">
+  <div class="absolute inset-0 bg-inchiostro/25" data-panel-close></div>
+
+  <aside class="drawer absolute right-0 top-0 flex h-full w-full max-w-[26rem] flex-col overflow-hidden bg-panna">
+
+    <!-- firma cromatica del marchio -->
+    <div class="riga-colori shrink-0"></div>
+
+    <div class="relative flex items-center justify-between px-5 py-5 sm:px-7">
+      <p class="t-eyebrow text-salvia">La tua borsa</p>
+      <button type="button" data-panel-close aria-label="Chiudi il carrello" class="-mr-2 p-2 hover:text-ocra">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M1 1l14 14M15 1L1 15" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </button>
+
+      <!-- fiorellino disegnato, in alto a destra -->
+      <div class="fiore-decoro pointer-events-none absolute -right-3 top-8 w-16 text-pesca opacity-70" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none">
+          <g stroke="currentColor" stroke-width="1.1">
+            <ellipse cx="30" cy="14" rx="7" ry="11"/>
+            <ellipse cx="45" cy="25" rx="7" ry="11" transform="rotate(72 45 25)"/>
+            <ellipse cx="39" cy="43" rx="7" ry="11" transform="rotate(144 39 43)"/>
+            <ellipse cx="21" cy="43" rx="7" ry="11" transform="rotate(216 21 43)"/>
+            <ellipse cx="15" cy="25" rx="7" ry="11" transform="rotate(288 15 25)"/>
+            <circle cx="30" cy="30" r="5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="relative flex-1 overflow-y-auto px-5 sm:px-7">
+      <div id="cart-empty">
+        <div class="fiore-decoro mx-auto mt-6 w-40 text-oliva opacity-80" aria-hidden="true">
+          <svg viewBox="0 0 120 100" fill="none">
+            <g stroke="currentColor" stroke-width="1.2">
+              <path d="M60 96V44"/>
+              <path d="M60 66c0-12 8-19 19-20 1 12-7 20-19 20Z"/>
+              <path d="M60 80c0-12-8-19-19-20-1 12 7 20 19 20Z"/>
+            </g>
+            <g stroke="#D98236" stroke-width="1.2">
+              <ellipse cx="60" cy="18" rx="8" ry="13"/>
+              <ellipse cx="77" cy="30" rx="8" ry="13" transform="rotate(72 77 30)"/>
+              <ellipse cx="70" cy="50" rx="8" ry="13" transform="rotate(144 70 50)"/>
+              <ellipse cx="50" cy="50" rx="8" ry="13" transform="rotate(216 50 50)"/>
+              <ellipse cx="43" cy="30" rx="8" ry="13" transform="rotate(288 43 30)"/>
+              <circle cx="60" cy="34" r="6" stroke="#B2001F"/>
+            </g>
+            <g stroke="#8CB4D6" stroke-width="1.2">
+              <ellipse cx="22" cy="62" rx="5" ry="8"/>
+              <ellipse cx="32" cy="70" rx="5" ry="8" transform="rotate(72 32 70)"/>
+              <ellipse cx="12" cy="70" rx="5" ry="8" transform="rotate(288 12 70)"/>
+              <circle cx="22" cy="70" r="3" stroke="#D98236"/>
+            </g>
+            <g stroke="#EFAFA5" stroke-width="1.2">
+              <ellipse cx="100" cy="70" rx="5" ry="8"/>
+              <ellipse cx="108" cy="78" rx="5" ry="8" transform="rotate(72 108 78)"/>
+              <ellipse cx="92" cy="78" rx="5" ry="8" transform="rotate(288 92 78)"/>
+              <circle cx="100" cy="78" r="3" stroke="#4C6B5C"/>
+            </g>
+          </svg>
+        </div>
+
+        <p class="mt-6 text-center font-display text-lg text-inchiostro">La borsa è ancora vuota.</p>
+        <p class="mx-auto mt-2 max-w-[26ch] text-center text-sm leading-relaxed text-ardesia/70">
+          Ogni pezzo è cucito a mano in via Orcagna: ci vuole un attimo per
+          sceglierne uno.
+        </p>
+        <p class="mt-6 text-center">
+          <a href="shop.html" class="btn btn--ocra">Scopri il catalogo</a>
+        </p>
+      </div>
+
+      <ul id="cart-items" class="hairline"></ul>
+    </div>
+
+    <div id="cart-footer" hidden class="border-t border-linea px-5 py-6 sm:px-7">
+      <div class="flex items-baseline justify-between">
+        <span class="t-micro text-salvia">Subtotale</span>
+        <span id="cart-subtotal" class="font-display text-lg text-inchiostro">0</span>
+      </div>
+      <p class="mt-2 flex items-center gap-2 text-xs leading-relaxed text-ardesia/60">
+        <span class="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-oliva"></span>
+        Confezione in carta riciclata, spedizione calcolata al checkout.
+      </p>
+      <button type="button" id="cart-checkout" class="btn btn--ocra mt-5 w-full">Vai al checkout</button>
+      <p id="cart-nota" hidden class="mt-3 text-center text-xs text-gotico">
+        Demo dimostrativa: il checkout non è attivo.
+      </p>
+    </div>
+  </aside>
+</div>
+
+<main id="main" class="acc-salvia pt-20 md:pt-28">
+
+  <!-- ==================================================== APERTURA -->
+  <section class="relative overflow-hidden pb-12 pt-12 sezione md:pb-16 md:pt-20">
+
+    <div class="deco galleggia right-[6%] top-[22%] w-12 text-oliva md:w-16" data-fiore="45" data-opacita="0.5" aria-hidden="true">
+      <svg viewBox="0 0 60 60" fill="none">
+        <g stroke="currentColor" stroke-width="1.1">
+          <ellipse cx="30" cy="14" rx="7" ry="11"/>
+          <ellipse cx="45" cy="25" rx="7" ry="11" transform="rotate(72 45 25)"/>
+          <ellipse cx="39" cy="43" rx="7" ry="11" transform="rotate(144 39 43)"/>
+          <ellipse cx="21" cy="43" rx="7" ry="11" transform="rotate(216 21 43)"/>
+          <ellipse cx="15" cy="25" rx="7" ry="11" transform="rotate(288 15 25)"/>
+          <circle cx="30" cy="30" r="5"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap sopra">
+      <p class="t-eyebrow testo-acc" data-reveal>Chi siamo &mdash; Via Orcagna 6, Firenze</p>
+
+      <h1 class="t-mega mt-5 max-w-[16ch] text-inchiostro">
+        <span class="block" data-split>Moda lenta,</span>
+        <span class="block testo-acc" data-split>per scelta.</span>
+      </h1>
+
+      <div class="mt-10 grid gap-8 md:mt-14 md:grid-cols-12" data-stagger>
+        <p class="t-lead md:col-span-5 md:col-start-6" data-reveal>
+          EleoLab è un atelier fiorentino dove si disegna, si taglia, si cuce e
+          si insegna. Facciamo poche cose, le facciamo a mano e ci mettiamo il
+          tempo che serve.
+        </p>
+        <p class="text-sm leading-relaxed md:col-span-3" data-reveal>
+          Capi sartoriali, maglieria e fiori in seta: tre linee diverse, un
+          unico modo di lavorare. Piccole quantita, materiali scelti uno per
+          uno, niente che non sappiamo raccontare.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== IMMAGINE CONTENUTA -->
+  <section class="sezione">
+    <figure class="wrap-medio">
+      <div class="media aspect-[4/5] md:aspect-[3/2]" data-parallax="6" data-reveal>
+        <img src="assets/editoriale2.jpg"
+             alt="Maglione in lana lavorato a mano, indossato davanti a un vecchio capanno" loading="lazy" decoding="async" class="tex">
+      </div>
+      <figcaption class="mt-3 t-micro text-ardesia/50" data-reveal>
+        Maglia in lana a due colori, lavorata ai ferri in atelier
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ==================================================== VALORI -->
+  <section class="py-[var(--sezione)] sezione">
+    <div class="wrap-medio">
+      <p class="t-eyebrow testo-acc" data-reveal>I nostri valori</p>
+      <h2 class="t-huge mt-5 max-w-[20ch] text-inchiostro" data-split>Quello in cui crediamo, detto senza giri.</h2>
+
+      <div class="mt-12 grid gap-10 md:mt-14 md:grid-cols-3 md:gap-8" data-stagger>
+        <div data-reveal>
+          <h3 class="font-display text-base text-salvia">Poche cose, fatte bene</h3>
+          <p class="mt-3 text-sm leading-relaxed">
+            Ogni modello nasce in pochi pezzi, spesso in uno solo. Preferiamo un
+            capo che dura dieci anni a dieci capi che durano una stagione.
+          </p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display text-base text-salvia">Materiali con una storia</h3>
+          <p class="mt-3 text-sm leading-relaxed">
+            Sete e lane che arrivano da rimanenze di tessitura, fibre naturali,
+            tinture preparate a mano. Se un tessuto non ci convince, il capo non
+            si fa.
+          </p>
+        </div>
+        <div data-reveal>
+          <h3 class="font-display text-base text-salvia">Tempo, non stagioni</h3>
+          <p class="mt-3 text-sm leading-relaxed">
+            Non seguiamo il calendario delle collezioni e non facciamo saldi. Un
+            capo entra in catalogo quando è pronto ed esce quando finisce la
+            pezza.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== TECNICHE -->
+  <section class="fondo-acc relative overflow-hidden py-[var(--sezione)] sezione">
+
+    <div class="deco galleggia--lento left-[4%] top-[8%] w-10 text-pesca md:w-16" data-fiore="45" data-opacita="0.6" aria-hidden="true">
+      <svg viewBox="0 0 60 60" fill="none">
+        <g stroke="currentColor" stroke-width="1.1">
+          <ellipse cx="30" cy="16" rx="6" ry="10"/>
+          <ellipse cx="44" cy="30" rx="6" ry="10" transform="rotate(90 44 30)"/>
+          <ellipse cx="30" cy="44" rx="6" ry="10"/>
+          <ellipse cx="16" cy="30" rx="6" ry="10" transform="rotate(90 16 30)"/>
+          <circle cx="30" cy="30" r="4" stroke="#D98236"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap sopra">
+      <p class="t-eyebrow testo-acc" data-reveal>Le tecniche</p>
+      <h2 class="t-huge mt-5 max-w-[18ch] text-inchiostro" data-split>Due mestieri, lo stesso tavolo.</h2>
+
+      <!-- sartoria -->
+      <div class="mt-14 grid gap-8 md:mt-20 md:grid-cols-12 md:items-center md:gap-12">
+        <div class="md:col-span-5" data-reveal>
+          <div class="media aspect-[4/3] md:aspect-[4/5]" data-parallax="6">
+            <img src="assets/prodotto2.jpg" alt="Dettaglio del collo di una giacca in tweed con etichetta EleoLab" loading="lazy" decoding="async" class="tex">
+          </div>
+        </div>
+
+        <div class="md:col-span-6 md:col-start-7" data-stagger>
+          <p class="t-eyebrow text-ardesia/60" data-reveal>01 &mdash; Sartoria</p>
+          <h3 class="t-big mt-4 text-inchiostro" data-reveal>Cartamodello, prova, aggiustatura</h3>
+          <div class="mt-5 space-y-4 text-sm leading-relaxed">
+            <p data-reveal>
+              Ogni modello parte da un cartamodello disegnato a mano e provato
+              su persona vera. Le cuciture importanti sono rifinite a mano, le
+              fodere scelte per contrasto: quello che non si vede conta quanto
+              il resto.
+            </p>
+            <p data-reveal>
+              I capi si possono rifare sulle vostre misure e si possono
+              aggiustare negli anni. Un orlo, una fodera, un bottone: sono cose
+              che si sistemano, non motivi per buttare via un capo.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- fiori in seta -->
+      <div class="mt-16 grid gap-8 md:mt-24 md:grid-cols-12 md:items-center md:gap-12">
+        <div class="md:order-2 md:col-span-5 md:col-start-8" data-reveal>
+          <div class="media aspect-[4/3] md:aspect-[4/5]" data-parallax="6">
+            <img src="assets/fiore1.jpg" alt="Grande peonia in seta modellata a mano" loading="lazy" decoding="async" class="tex">
+          </div>
+        </div>
+
+        <div class="md:order-1 md:col-span-6" data-stagger>
+          <p class="t-eyebrow text-ardesia/60" data-reveal>02 &mdash; Fiori in seta</p>
+          <h3 class="t-big mt-4 text-inchiostro" data-reveal>Taglio in sbieco, ferro caldo, montaggio</h3>
+          <div class="mt-5 space-y-4 text-sm leading-relaxed">
+            <p data-reveal>
+              I petali si tagliano in sbieco da organza e raso, si inamidano e
+              si modellano uno a uno sul ferro caldo: è lì che la seta piatta
+              impara la curva e il bordo increspato.
+            </p>
+            <p data-reveal>
+              Il montaggio procede dal cuore verso l&rsquo;esterno, cucito a filo
+              di seta attorno a un&rsquo;anima metallica. Nessuna colla
+              sintetica, e nessun fiore identico a un altro.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== CITAZIONE -->
+  <section class="py-[var(--sezione)] sezione">
+    <blockquote class="wrap-stretto text-center">
+      <p class="t-mega font-display testo-acc" data-split>Cucire è una forma di attenzione.</p>
+      <footer class="mt-6 t-micro text-ardesia/60" data-reveal>Il nostro modo di stare al mondo</footer>
+    </blockquote>
+  </section>
+
+  <!-- ==================================================== COME RAGGIUNGERCI -->
+  <section id="come-raggiungerci" class="scroll-mt-32 pb-[var(--sezione)] sezione">
+    <div class="wrap-medio hairline pt-10">
+      <p class="t-eyebrow testo-acc" data-reveal>Come raggiungerci</p>
+
+      <div class="mt-8 grid gap-10 md:grid-cols-12 md:gap-12" data-stagger>
+        <p class="t-lead md:col-span-7" data-reveal>
+          Dalla stazione di Firenze Santa Maria Novella, è possibile raggiungerci
+          comodamente prendendo la linea autobus 14 in direzione est, oppure con
+          una breve corsa in taxi verso la zona di Piazza Beccaria / Via Orcagna.
+        </p>
+
+        <address class="space-y-3 text-sm not-italic leading-relaxed md:col-span-4 md:col-start-9" data-reveal>
+          <span class="block font-display text-base text-inchiostro">EleoLab</span>
+          <span class="block">Via Orcagna 6<br>50121 Firenze, Italy</span>
+          <a href="tel:+393475515759" class="link-line block">347 551 5759</a>
+          <a href="mailto:eleolab.firenze@gmail.com" class="link-line block testo-acc">eleolab.firenze@gmail.com</a>
+        </address>
+      </div>
+
+      <!-- mappa: Google Maps -->
+      <figure class="mt-10" data-reveal>
+        <div class="media aspect-[4/3] border border-linea md:aspect-[16/7]">
+          <iframe
+            title="Mappa: EleoLab, Via Orcagna 6, Firenze"
+            src="https://maps.google.com/maps?q=Via%20Orcagna%206%2C%2050121%20Firenze&amp;hl=it&amp;z=16&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="mappa-embed"></iframe>
+        </div>
+        <figcaption class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 t-micro">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Orcagna+6%2C+50121+Firenze"
+             target="_blank" rel="noopener" class="link-line testo-acc">Apri in Google Maps</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Orcagna+6%2C+50121+Firenze"
+             target="_blank" rel="noopener" class="link-line">Indicazioni stradali</a>
+        </figcaption>
+      </figure>
+
+      <div class="mt-12 flex flex-wrap gap-3" data-reveal>
+        <a href="workshops.html" class="btn">Vieni a un workshop</a>
+        <a href="shop.html" class="btn btn--ghost">Vedi il catalogo</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================= FOOTER GLOBALE -->
+<footer class="relative mt-[var(--sezione)] border-t border-linea bg-panna pb-10 pt-14 sezione md:pt-20">
+  <div class="wrap">
+
+    <div class="grid gap-14 md:grid-cols-12 md:gap-10">
+
+      <div class="md:col-span-5" data-stagger>
+        <h2 class="t-big text-inchiostro" data-reveal>Restiamo in contatto.</h2>
+        <p class="mt-5 max-w-sm text-sm leading-relaxed" data-reveal>
+          Una lettera ogni stagione: nuovi capi, date dei workshop e storie
+          dall&rsquo;atelier di via Orcagna. Niente di più.
+        </p>
+
+        <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+              data-validate class="mt-8 max-w-sm">
+          <input type="hidden" name="form-name" value="newsletter">
+          <p hidden><label>Non compilare: <input name="bot-field"></label></p>
+
+          <div data-form-body>
+            <label for="nl-email" class="sr-only">Indirizzo email</label>
+            <div class="flex items-end gap-3">
+              <input id="nl-email" name="email" type="email" required placeholder="La tua email" class="field">
+              <button type="submit" class="shrink-0 pb-3 t-micro text-ocra hover:text-inchiostro">Iscriviti</button>
+            </div>
+            <p class="field-error">Inserisci un indirizzo email valido.</p>
+          </div>
+
+          <p data-success hidden class="text-sm text-salvia">
+            Grazie. Ti abbiamo aggiunta alla nostra lettera stagionale.
+          </p>
+        </form>
+      </div>
+
+      <nav class="md:col-span-3 md:col-start-7" aria-label="Navigazione a pie di pagina">
+        <p class="t-eyebrow text-ardesia/70">Navigazione</p>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a href="index.html" class="link-line">Home</a></li>
+          <li><a href="shop.html" class="link-line">Prodotti</a></li>
+          <li><a href="chi-siamo.html" class="link-line">Chi Siamo</a></li>
+          <li><a href="workshops.html" class="link-line">Workshops</a></li>
+          <li><a href="chi-siamo.html#come-raggiungerci" class="link-line">Come raggiungerci</a></li>
+        </ul>
+      </nav>
+
+      <div class="md:col-span-3">
+        <p class="t-eyebrow text-ardesia/70">Atelier</p>
+        <address class="mt-5 space-y-3 text-sm not-italic leading-relaxed">
+          <span class="block">Via Orcagna 6<br>50121 Firenze, Italy</span>
+          <a href="tel:+393475515759" class="link-line block">347 551 5759</a>
+          <a href="mailto:eleolab.firenze@gmail.com" class="link-line block text-ocra">eleolab.firenze@gmail.com</a>
+        </address>
+      </div>
+    </div>
+
+    <div class="mt-16 flex flex-col gap-6 border-t border-linea pt-7 md:flex-row md:items-center md:justify-between">
+      <img src="assets/logo-eleolab.png" alt="EleoLab" width="2476" height="1201" class="logo-blend w-32">
+
+      <ul class="flex flex-wrap gap-x-7 gap-y-2 t-micro">
+        <li><a href="https://www.instagram.com/eleolab/" target="_blank" rel="noopener" class="link-line">Instagram</a></li>
+        <li><a href="mailto:eleolab.firenze@gmail.com" class="link-line">Scrivici</a></li>
+        <li><a href="workshops.html#iscrizione" class="link-line">Prenota un workshop</a></li>
+      </ul>
+
+      <p class="text-[11px] leading-relaxed text-ardesia/60">
+        &copy; <span data-year>2026</span> EleoLab &mdash; Via Orcagna 6, Firenze<br>
+        Cucito a mano, in Italia.<br>
+        <span class="mt-1 inline-block text-ardesia/45">Made by MKissell.studio</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- accesso al pannello: volutamente poco visibile -->
+  <button type="button" id="accesso-pannello" class="accesso-segreto"
+          aria-label="Accesso area riservata">EL</button>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="main.js" defer></script>
+</body>
+</html>

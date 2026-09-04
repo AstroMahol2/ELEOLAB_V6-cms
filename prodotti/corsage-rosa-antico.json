@@ -1,0 +1,10 @@
+{
+  "titolo": "Corsage Rosa Antico",
+  "prezzo": 95,
+  "immagine": "/assets/fiore2.jpg",
+  "descrizione": "Un fiore piu piccolo della peonia, montato su spilla in ottone nichel free. Nasce dagli scampoli che non bastano per un capo.",
+  "categoria": "fiori",
+  "tag": ["corsage","fiori in seta","spilla","rosa antico"],
+  "materiale": "Seta tinta a mano",
+  "evidenza": false
+}

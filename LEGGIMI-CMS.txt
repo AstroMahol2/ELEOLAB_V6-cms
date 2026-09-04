@@ -1,0 +1,76 @@
+EleoLab — versione con pannello contenuti (Decap CMS)
+=====================================================
+
+COSA E' CAMBIATO RISPETTO A "sito-ok"
+-------------------------------------
+  admin/                pannello contenuti (login + configurazione)
+  prodotti/             un file JSON per prodotto, scritti dal pannello
+  prodotti/index.json   elenco unico che legge il sito (generato, non a mano)
+  tools/genera-indice.sh  ricostruisce l'indice
+  cms-prodotti.js       stampa i prodotti nella griglia del catalogo
+  assets/prodotti/      dove finiscono le immagini caricate dal pannello
+
+Inoltre: i percorsi delle immagini sono stati messi tutti in minuscolo
+(assets/ invece di ASSETS/), perche' i server dei siti pubblicati
+distinguono maiuscole e minuscole mentre Windows no.
+
+
+PERCHE' SERVE UN INDICE
+-----------------------
+Un sito statico non puo' chiedere "dammi l'elenco dei file in questa
+cartella": il browser deve sapere in anticipo cosa esiste. Ogni volta che
+pubblichi dal pannello, Netlify riesegue tools/genera-indice.sh e ricostruisce
+prodotti/index.json unendo tutte le schede. Il sito fa una sola richiesta.
+
+Se modifichi i JSON a mano sul tuo computer, rigenera l'indice cosi:
+    bash tools/genera-indice.sh
+
+
+ATTIVARE IL PANNELLO — UNA VOLTA SOLA
+-------------------------------------
+Il pannello funziona solo con il sito collegato a un repository GitHub.
+Con il caricamento trascinando la cartella NON funziona: Git Gateway ha
+bisogno del repository per salvare le modifiche.
+
+  1. Carica questa cartella su GitHub (il suo contenuto dev'essere la radice
+     del repository: index.html in cima, non dentro un'altra cartella).
+     Se preferisci tenerla dentro una cartella, apri admin/config.yml e
+     anteponi il nome della cartella a "folder" e "media_folder".
+
+  2. Su Netlify: Add new site -> Import an existing project -> scegli il
+     repository. Publish directory: la radice (oppure il nome della cartella).
+
+  3. Netlify -> Site configuration -> Identity -> Enable Identity.
+
+  4. Identity -> Registration -> imposta "Invite only"
+     (altrimenti chiunque puo' registrarsi e scrivere sul sito).
+
+  5. Identity -> Services -> Git Gateway -> Enable Git Gateway.
+
+  6. Identity -> Invite users -> invita il tuo indirizzo email.
+     Ti arriva un invito: accettalo e scegli la password.
+
+  7. Da quel momento entri dal quadratino "EL" in fondo a sinistra nel
+     footer del sito, oppure andando su /admin/.
+
+
+COME SI AGGIUNGE UN PRODOTTO
+----------------------------
+Pannello -> Prodotti -> New Prodotto. Compili titolo, prezzo, immagine,
+descrizione, categoria e tag, poi Publish. Netlify ricostruisce il sito da
+solo: dopo un minuto circa il prodotto e' online nel catalogo.
+
+La categoria e' un elenco chiuso (sartoria, maglieria, fiori, accessori)
+perche' deve combaciare con i pulsanti dei filtri del catalogo.
+
+
+COME FUNZIONA IL CATALOGO
+-------------------------
+Mostra i primi 6 pezzi; gli altri restano nascosti sotto una sfumatura con
+una freccia arancione. Al clic la sfumatura sparisce e la griglia si allunga.
+Per cambiare quanti pezzi si vedono all'inizio, in shop.html:
+
+    <div class="zona-catalogo" data-limite="6">
+
+Se prodotti/index.json manca o e' vuoto, restano le schede scritte a mano
+nell'HTML: la pagina non resta mai bianca.

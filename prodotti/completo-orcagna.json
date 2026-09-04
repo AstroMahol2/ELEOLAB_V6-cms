@@ -1,0 +1,10 @@
+{
+  "titolo": "Completo Orcagna",
+  "prezzo": 290,
+  "immagine": "/assets/prodotto6.jpg",
+  "descrizione": "Camicia stampata e pantalone in velluto a coste, pensati per stare insieme ma venduti anche separati. Il basco e in lana cotta.",
+  "categoria": "sartoria",
+  "tag": ["completo","velluto","camicia","pantalone"],
+  "materiale": "Camicia e pantalone in velluto",
+  "evidenza": false
+}

@@ -1,0 +1,57 @@
+# EleoLab — versione con Decap CMS
+# Questa cartella e' la radice del sito pubblicato.
+# Se colleghi il repository, imposta Publish directory su questa cartella.
+
+[build]
+  publish = "."
+  # Rigenera prodotti/index.json a ogni pubblicazione: il pannello scrive un
+  # file JSON per prodotto, il sito ha bisogno di un elenco unico da leggere.
+  command = "bash tools/genera-indice.sh"
+
+# ---------------------------------------------------------------- SITO ----
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # 'unsafe-inline' su style-src e' richiesto dal widget di Netlify Identity,
+    # che inietta i propri stili. Gli script restano vincolati: nessun codice
+    # inline viene eseguito.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com; connect-src 'self' https://identity.netlify.com; form-action 'self'; base-uri 'none'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests"
+
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), interest-cohort=()"
+
+# -------------------------------------------------------------- PANNELLO --
+# Decap CMS e' un'applicazione React che compila stili e codice a runtime e
+# parla con GitHub: qui la policy dev'essere piu' larga. Vale solo per /admin.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://identity.netlify.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.github.com https://identity.netlify.com https://unpkg.com; frame-src 'self'; worker-src 'self' blob:; form-action 'self'"
+    X-Robots-Tag = "noindex, nofollow"
+    Cache-Control = "no-store"
+
+# ------------------------------------------------------------------ CACHE --
+[[headers]]
+  for = "/assets/*"
+  # Un giorno, non un anno: i file vengono sostituiti mantenendo lo stesso nome
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/prodotti/*"
+  # I contenuti del pannello devono aggiornarsi appena pubblicati
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

@@ -1,0 +1,10 @@
+{
+  "titolo": "Camicia Salvia",
+  "prezzo": 160,
+  "immagine": "/assets/prodotto7.jpg",
+  "descrizione": "La stessa camicia dei volti nella tinta verde salvia, con collo arricciato e maniche a palloncino.",
+  "categoria": "sartoria",
+  "tag": ["camicia","salvia","viscosa","stampa"],
+  "materiale": "Viscosa stampata · collo arricciato",
+  "evidenza": false
+}

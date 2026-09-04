@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>EleoLab — Pannello contenuti</title>
+
+  <!-- Widget di Netlify Identity: gestisce login, inviti e recupero password -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <!-- Decap CMS (ex Netlify CMS): monta qui il pannello -->
+  <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
+
+  <!-- Dopo il primo accesso da invito, riporta al pannello invece che alla home -->
+  <script src="redirect-login.js"></script>
+</body>
+</html>

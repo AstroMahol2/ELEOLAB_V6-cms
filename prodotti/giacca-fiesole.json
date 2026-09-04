@@ -1,0 +1,10 @@
+{
+  "titolo": "Giacca Fiesole",
+  "prezzo": 340,
+  "immagine": "/assets/prodotto1.jpg",
+  "descrizione": "Tweed di lana con fodera stampata scelta per contrasto. Cuciture importanti rifinite a mano, cartamodello disegnato in atelier e provato su persona.",
+  "categoria": "sartoria",
+  "tag": ["giacca","tweed","sartoria","lana","fatto a mano"],
+  "materiale": "Tweed di lana · fodera stampata",
+  "evidenza": true
+}
