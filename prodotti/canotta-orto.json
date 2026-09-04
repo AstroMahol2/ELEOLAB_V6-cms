@@ -6,5 +6,10 @@
   "categoria": "maglieria",
   "tag": ["canotta","cotone","maglieria","verde oliva"],
   "materiale": "Cotone ritorto · ai ferri",
-  "evidenza": false
+  "evidenza": false,
+  "galleria": {
+    "foto1": "/assets/prodotto5.jpg",
+    "foto2": "/assets/editoriale2.jpg"
+  },
+  "archiviato": false
 }

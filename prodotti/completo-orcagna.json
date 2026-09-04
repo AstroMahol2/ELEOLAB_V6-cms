@@ -6,5 +6,11 @@
   "categoria": "sartoria",
   "tag": ["completo","velluto","camicia","pantalone"],
   "materiale": "Camicia e pantalone in velluto",
-  "evidenza": false
+  "evidenza": false,
+  "galleria": {
+    "foto1": "/assets/prodotto6.jpg",
+    "foto2": "/assets/prodotto8.jpg",
+    "foto3": "/assets/prodotto7.jpg"
+  },
+  "archiviato": false
 }

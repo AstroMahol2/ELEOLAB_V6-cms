@@ -256,7 +256,7 @@
       <li aria-hidden="true">/</li>
       <li><a href="shop.html" class="link-line">Prodotti</a></li>
       <li aria-hidden="true">/</li>
-      <li class="text-ardesia">Peonia di seta</li>
+      <li class="text-ardesia" data-p="titolo">Peonia di seta</li>
     </ol>
   </nav>
 
@@ -291,13 +291,13 @@
       <!-- ---------------------------------------- informazioni -->
       <div class="mt-8 lg:col-span-4 lg:col-start-9 lg:mt-0 lg:sticky lg:top-32 lg:self-start">
 
-        <p class="t-eyebrow testo-acc">Fiori in seta &mdash; pezzo unico</p>
+        <p class="t-eyebrow testo-acc" data-p="occhiello">Fiori in seta &mdash; pezzo unico</p>
 
-        <h1 class="t-huge mt-4 text-inchiostro">Peonia di seta</h1>
+        <h1 class="t-huge mt-4 text-inchiostro" data-p="titolo">Peonia di seta</h1>
 
-        <p class="mt-4 font-display text-lg text-inchiostro">120 &euro;</p>
+        <p class="mt-4 font-display text-lg text-inchiostro" data-p="prezzo">120 &euro;</p>
 
-        <div class="mt-7 space-y-4 text-sm leading-relaxed">
+        <div class="mt-7 space-y-4 text-sm leading-relaxed" data-p="descrizione">
           <p>
             Nasce da tagli di organza e raso di seta rimasti sul telaio: metri
             che nessuno avrebbe più usato. Li tingiamo a mano, un bagno alla
@@ -509,8 +509,8 @@
   <!-- ============================================ BARRA ACQUISTO MOBILE -->
   <div class="fixed inset-x-0 bottom-0 z-40 flex items-center gap-4 border-t border-linea bg-panna/95 px-5 py-3 backdrop-blur lg:hidden">
     <div class="min-w-0 flex-1">
-      <p class="truncate font-display text-[13px] text-inchiostro">Peonia di seta</p>
-      <p class="t-price text-ardesia/60">120 &euro; &middot; pezzo unico</p>
+      <p class="truncate font-display text-[13px] text-inchiostro" data-p="titolo">Peonia di seta</p>
+      <p class="t-price text-ardesia/60" data-p="prezzo-nota">120 &euro; &middot; pezzo unico</p>
     </div>
     <button type="button" class="btn btn--ocra shrink-0 px-6 py-3"
             data-add
@@ -608,5 +608,6 @@
         integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="main.js" defer></script>
+<script src="cms-prodotto.js" defer></script>
 </body>
 </html>

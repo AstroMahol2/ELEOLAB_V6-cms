@@ -437,22 +437,31 @@
     var riga = $('#gallery');
     if (!riga) return;
 
-    var slides = $$('[data-slide]', riga);
     var punti = $('#gallery-dots');
     var contatore = $('#gallery-index');
-    if (!slides.length) return;
 
-    if (punti && !punti.children.length) {
-      slides.forEach(function (_, i) {
+    // le foto si rileggono a ogni giro: la scheda prodotto le sostituisce
+    // quando arriva il JSON dal pannello
+    function slides() { return $$('[data-slide]', riga); }
+
+    function costruisciPunti() {
+      var s = slides();
+      if (!punti || !s.length) return;
+
+      punti.textContent = '';
+      s.forEach(function (_, i) {
         var b = document.createElement('button');
         b.type = 'button';
         b.className = 'dot' + (i === 0 ? ' is-on' : '');
         b.setAttribute('aria-label', 'Vai alla foto ' + (i + 1));
         b.addEventListener('click', function () {
-          riga.scrollTo({ left: slides[i].offsetLeft - riga.offsetLeft, behavior: 'smooth' });
+          var el = slides()[i];
+          if (el) riga.scrollTo({ left: el.offsetLeft - riga.offsetLeft, behavior: 'smooth' });
         });
         punti.appendChild(b);
       });
+
+      if (contatore) contatore.textContent = '1 / ' + s.length;
     }
 
     var pendente = false;
@@ -461,16 +470,19 @@
       pendente = true;
       window.requestAnimationFrame(function () {
         pendente = false;
-        var i = Math.round(riga.scrollLeft / (slides[0].offsetWidth || 1));
-        i = Math.max(0, Math.min(slides.length - 1, i));
+        var s = slides();
+        if (!s.length) return;
+        var i = Math.round(riga.scrollLeft / (s[0].offsetWidth || 1));
+        i = Math.max(0, Math.min(s.length - 1, i));
         if (punti) {
           $$('.dot', punti).forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
         }
-        if (contatore) contatore.textContent = (i + 1) + ' / ' + slides.length;
+        if (contatore) contatore.textContent = (i + 1) + ' / ' + s.length;
       });
     }, { passive: true });
 
-    if (contatore) contatore.textContent = '1 / ' + slides.length;
+    costruisciPunti();
+    document.addEventListener('eleolab:galleria', costruisciPunti);
   })();
 
   /* ---------------------------------------------------------------- form */

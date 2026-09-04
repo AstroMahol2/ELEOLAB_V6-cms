@@ -133,7 +133,11 @@
       return r.json();
     })
     .then(function (prodotti) {
-      if (!Array.isArray(prodotti) || !prodotti.length) return;
+      if (!Array.isArray(prodotti)) return;
+
+      // i pezzi archiviati restano nel pannello ma spariscono dal sito
+      prodotti = prodotti.filter(function (p) { return !p.archiviato; });
+      if (!prodotti.length) return;
 
       // in evidenza per primi, poi in ordine alfabetico
       prodotti.sort(function (a, b) {

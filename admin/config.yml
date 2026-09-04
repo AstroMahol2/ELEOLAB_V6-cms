@@ -35,6 +35,13 @@ collections:
     identifier_field: titolo
     summary: "{{titolo}} — {{prezzo}} €"
     sortable_fields: ["titolo", "prezzo", "categoria"]
+    view_filters:
+      - label: "Solo in vendita"
+        field: archiviato
+        pattern: false
+      - label: "Solo archiviati"
+        field: archiviato
+        pattern: true
     editor:
       preview: false
 
@@ -52,11 +59,29 @@ collections:
         step: 1
         hint: "Solo il numero, senza simbolo dell euro"
 
-      - label: "Immagine"
+      # --- COPERTINA -------------------------------------------------------
+      # E' l'unica foto che si vede nella pagina Prodotti: sceglila bene.
+      - label: "Foto di copertina"
         name: "immagine"
         widget: "image"
         allow_multiple: false
-        hint: "Formato consigliato: verticale 4:5, almeno 900 px di larghezza"
+        hint: "La foto che appare nel catalogo. Verticale 4:5, almeno 900 px di larghezza"
+
+      # --- GALLERIA --------------------------------------------------------
+      # Cinque posti per le foto della scheda prodotto. Riempi quelli che
+      # servono: i posti lasciati vuoti non compaiono sul sito.
+      - label: "Galleria della scheda prodotto"
+        name: "galleria"
+        widget: "object"
+        collapsed: false
+        required: false
+        hint: "Fino a 5 foto. I posti vuoti vengono semplicemente saltati"
+        fields:
+          - { label: "Foto 1", name: "foto1", widget: "image", required: false }
+          - { label: "Foto 2", name: "foto2", widget: "image", required: false }
+          - { label: "Foto 3", name: "foto3", widget: "image", required: false }
+          - { label: "Foto 4", name: "foto4", widget: "image", required: false }
+          - { label: "Foto 5", name: "foto5", widget: "image", required: false }
 
       - label: "Descrizione"
         name: "descrizione"
@@ -96,3 +121,13 @@ collections:
         default: false
         required: false
         hint: "Se attivo, il pezzo compare tra i primi del catalogo"
+
+      # --- ARCHIVIO --------------------------------------------------------
+      # Toglie il pezzo dal sito senza cancellarlo: resta qui nel pannello e
+      # basta rimettere l'interruttore su spento per farlo tornare online.
+      - label: "Archiviato (nascosto dal sito)"
+        name: "archiviato"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Acceso = il pezzo sparisce dal catalogo ma non viene cancellato"

@@ -6,5 +6,10 @@
   "categoria": "maglieria",
   "tag": ["cardigan","mohair","maglieria","ai ferri"],
   "materiale": "Mohair e seta · ai ferri",
-  "evidenza": true
+  "evidenza": true,
+  "galleria": {
+    "foto1": "/assets/prodotto4.jpg",
+    "foto2": "/assets/editoriale1.jpg"
+  },
+  "archiviato": false
 }

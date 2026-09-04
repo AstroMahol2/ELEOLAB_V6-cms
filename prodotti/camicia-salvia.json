@@ -6,5 +6,9 @@
   "categoria": "sartoria",
   "tag": ["camicia","salvia","viscosa","stampa"],
   "materiale": "Viscosa stampata · collo arricciato",
-  "evidenza": false
+  "evidenza": false,
+  "galleria": {
+    "foto1": "/assets/prodotto7.jpg"
+  },
+  "archiviato": false
 }

@@ -6,5 +6,9 @@
   "categoria": "fiori",
   "tag": ["copricapo","veletta","fiori in seta","cerimonia","wedding"],
   "materiale": "Seta, piume e velo · su ordinazione",
-  "evidenza": false
+  "evidenza": false,
+  "galleria": {
+    "foto1": "/assets/fiore3.jpg"
+  },
+  "archiviato": false
 }

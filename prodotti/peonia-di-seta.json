@@ -6,5 +6,11 @@
   "categoria": "fiori",
   "tag": ["fiori in seta","peonia","fatto a mano","Firenze","seta"],
   "materiale": "Seta · pezzo unico",
-  "evidenza": true
+  "evidenza": true,
+  "galleria": {
+    "foto1": "/assets/fiore1.jpg",
+    "foto2": "/assets/fiore2.jpg",
+    "foto3": "/assets/fiore3.jpg"
+  },
+  "archiviato": false
 }

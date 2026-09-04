@@ -6,5 +6,9 @@
   "categoria": "accessori",
   "tag": ["culotte","cotone","ricamo","intimo"],
   "materiale": "Cotone · ricamo a mano",
-  "evidenza": false
+  "evidenza": false,
+  "galleria": {
+    "foto1": "/assets/prodotto10.jpg"
+  },
+  "archiviato": false
 }

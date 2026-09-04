@@ -6,5 +6,9 @@
   "categoria": "accessori",
   "tag": ["foulard","seta","stampa","accessori"],
   "materiale": "Seta stampata · orlo a mano",
-  "evidenza": false
+  "evidenza": false,
+  "galleria": {
+    "foto1": "/assets/prodotto9.jpg"
+  },
+  "archiviato": false
 }
