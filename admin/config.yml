@@ -16,9 +16,8 @@ backend:
 media_folder: "assets/prodotti"
 public_folder: "/assets/prodotti"
 
-# Messaggi dei commit generati dal pannello
-site_url: https://eleolab.netlify.app
-display_url: https://eleolab.netlify.app
+# Nessun site_url/display_url fissato: il pannello usa il sito su cui si trova,
+# qualunque esso sia. Cosi non punta piu a un indirizzo sbagliato.
 logo_url: /assets/logo-eleolab.png
 locale: "it"
 
