@@ -50,7 +50,11 @@ $dest = Join-Path ([System.IO.Path]::GetDirectoryName($valide[0])) 'pronte'
 if (-not (Test-Path -LiteralPath $dest)) { New-Item -ItemType Directory -Path $dest | Out-Null }
 
 # lato lungo a 1600: funziona sia in verticale sia in orizzontale
-$filtro = "scale='if(gt(iw,ih),min(1600,iw),-2)':'if(gt(iw,ih),-2,min(1600,ih))':flags=lanczos"
+$scala = "scale='if(gt(iw,ih),min(1600,iw),-2)':'if(gt(iw,ih),-2,min(1600,ih))':flags=lanczos"
+
+# I PNG ritagliati hanno lo sfondo trasparente: in JPEG diventerebbe nero.
+# Qui la foto viene appoggiata su un fondo bianco prima di essere salvata.
+$filtro = "[0:v]$scala[s];color=white[c];[c][s]scale2ref[c2][s2];[c2][s2]overlay=format=auto:shortest=1"
 
 $n = 0
 $risparmio = 0
@@ -61,7 +65,7 @@ foreach ($src in $valide) {
     $nome = [System.IO.Path]::GetFileNameWithoutExtension($src)
     $uscita = Join-Path $dest "$numero-$nome.jpg"
 
-    & $ffmpeg -hide_banner -loglevel error -y -i $src -vf $filtro -q:v 2 -pix_fmt yuvj420p $uscita 2>$null
+    & $ffmpeg -hide_banner -loglevel error -y -i $src -filter_complex $filtro -q:v 2 -pix_fmt yuvj420p $uscita 2>$null
 
     if (Test-Path -LiteralPath $uscita) {
         $prima = [int]((Get-Item -LiteralPath $src).Length / 1KB)
