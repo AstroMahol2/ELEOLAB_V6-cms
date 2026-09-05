@@ -64,7 +64,7 @@ collections:
         name: "immagine"
         widget: "image"
         allow_multiple: false
-        hint: "La foto che appare nel catalogo. Verticale 4:5, almeno 900 px di larghezza"
+        hint: "La foto del catalogo. Verticale 4:5, lato lungo 1600 px. Passala prima da tools/prepara-foto.cmd"
 
       # --- GALLERIA --------------------------------------------------------
       # Cinque posti per le foto della scheda prodotto. Riempi quelli che
@@ -74,7 +74,7 @@ collections:
         widget: "object"
         collapsed: false
         required: false
-        hint: "Fino a 5 foto. I posti vuoti vengono semplicemente saltati"
+        hint: "Fino a 5 foto, lato lungo 1600 px. I posti vuoti vengono saltati"
         fields:
           - { label: "Foto 1", name: "foto1", widget: "image", required: false }
           - { label: "Foto 2", name: "foto2", widget: "image", required: false }
